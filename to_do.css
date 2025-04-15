@@ -2,3 +2,22 @@ h1{
     font-family:"Segoe UI";
     color:slateblue;
 }
+
+#app-input-area{
+    padding-bottom: 20px;
+}
+
+#sample-output-grid{
+    display: grid;
+    grid-template-columns: 20px 150px 40px 10px;
+    grid-template-rows: auto;
+    background-color: sandybrown;
+}
+
+#output-rows{
+    display: grid;
+    grid-template-columns: 20px 150px 40px 10px;
+    grid-template-rows: auto;
+    background-color:lightcoral;
+}
+
