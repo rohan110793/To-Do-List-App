@@ -1,42 +1,48 @@
 
 let x;
 let y;
-let t_id;
+let i=0;
+let chk;
+let edi;
+let del;
 let parentElement;
-let parentElementOne;
-let parentElementTwo;
-let childElement;
-let childElementOne;
-let childElementTwo;
 let newElement;
-let newElementOne;
-let newElementTwo;
 
 let arr = [];
 
 
-
 function addTask(){
+
 
     x = document.getElementById("add-task-field").value;
     arr.push(x);
     y = document.getElementById("add-task-field").value = "";
 
-    parentElement = document.getElementById("checkbox-div");
-    newElement = document.createElement("input");
-    newElement.setAttribute("type", "checkbox");
-    newElement.setAttribute("id", "task-done");
+    parentElement = document.getElementById("task-list");
+    newElement = document.createElement("li");
+    newElement.setAttribute("id", "data"+i);
     parentElement.appendChild(newElement);
 
+    chk = document.createElement("input");
+    chk.setAttribute("type", "checkbox");
+    chk.setAttribute("label", "done");
+    parentElement.appendChild(chk);
 
-    for(let i=0;i<arr.length;i++){
-        parentElementOne = document.getElementById("task-name-div");
-        newElementOne = document.createElement("div");
-        newElementOne.setAttribute("id", i);
-        parentElementOne.appendChild(newElementOne);
+    edi = document.createElement("button");
+    edi.setAttribute("type", "button");
+    edi.setAttribute("id", "edit"+i);
+    parentElement.appendChild(edi);
+    document.getElementById("edit"+i).innerHTML="Edit";
 
-        document.getElementById(i).innerHTML = arr[i];
+    del = document.createElement("button");
+    del.setAttribute("type", "button");
+    del.setAttribute("id", "del"+i);
+    parentElement.appendChild(del);
+    document.getElementById("del"+i).innerHTML="Delete";
 
-    }
+
+    document.getElementById("data"+i).innerHTML = arr[i];
+    i++;
+
 
 }

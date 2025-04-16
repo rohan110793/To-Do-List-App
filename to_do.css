@@ -15,9 +15,8 @@ h1{
 }
 
 #output-rows{
-    display: grid;
-    grid-template-columns: 20px 150px 40px 10px;
-    grid-template-rows: auto;
     background-color:lightcoral;
+    margin-bottom: 90px;
 }
+
 
