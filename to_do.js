@@ -6,6 +6,7 @@ let chk;
 let edi;
 let del;
 let parentElement;
+let parentElementOne;
 let newElement;
 
 let arr = [];
@@ -22,27 +23,36 @@ function addTask(){
     newElement = document.createElement("li");
     newElement.setAttribute("id", "data"+i);
     parentElement.appendChild(newElement);
+    document.getElementById("data"+i).innerHTML = arr[i];
+
+    parentElementOne = document.getElementById("data"+i);
 
     chk = document.createElement("input");
     chk.setAttribute("type", "checkbox");
     chk.setAttribute("label", "done");
-    parentElement.appendChild(chk);
+    parentElementOne.appendChild(chk);
 
     edi = document.createElement("button");
     edi.setAttribute("type", "button");
     edi.setAttribute("id", "edit"+i);
-    parentElement.appendChild(edi);
+    parentElementOne.appendChild(edi);
     document.getElementById("edit"+i).innerHTML="Edit";
 
     del = document.createElement("button");
     del.setAttribute("type", "button");
     del.setAttribute("id", "del"+i);
-    parentElement.appendChild(del);
+    del.setAttribute("onclick", "deleteTask(this)");
+    parentElementOne.appendChild(del);
     document.getElementById("del"+i).innerHTML="Delete";
 
-
-    document.getElementById("data"+i).innerHTML = arr[i];
     i++;
 
+}
+
+
+function deleteTask(button) {
+
+    const listItem = button.parentElement // Get the parent <li> element
+    listItem.remove(); // Remove the <li> from the DOM
 
 }
