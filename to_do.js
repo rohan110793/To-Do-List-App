@@ -56,3 +56,41 @@ function deleteTask(button) {
     listItem.remove(); // Remove the <li> from the DOM
 
 }
+
+/*
+function editTodoItem(itemElement) {
+    const textElement = itemElement.querySelector('.todo-text');
+    const currentText = textElement.textContent;
+
+    const inputElement = document.createElement('input');
+    inputElement.type = 'text';
+    inputElement.value = currentText;
+
+    const saveButton = document.createElement('button');
+    saveButton.textContent = 'Save';
+
+    textElement.replaceWith(inputElement);
+    itemElement.querySelector('.edit-button').replaceWith(saveButton);
+
+    saveButton.addEventListener('click', () => {
+        const newText = inputElement.value;
+        inputElement.replaceWith(textElement);
+        textElement.textContent = newText;
+        saveButton.replaceWith(createEditButton(itemElement));
+    });
+}
+
+function createEditButton(itemElement) {
+    const editButton = document.createElement('button');
+    editButton.textContent = 'Edit';
+    editButton.classList.add('edit-button');
+    editButton.addEventListener('click', () => editTodoItem(itemElement));
+    return editButton;
+}
+
+// Example usage (assuming your to-do items have a class 'todo-item')
+const todoItems = document.querySelectorAll('.todo-item');
+todoItems.forEach(item => {
+    item.appendChild(createEditButton(item));
+});
+*/
