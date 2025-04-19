@@ -94,3 +94,31 @@ todoItems.forEach(item => {
     item.appendChild(createEditButton(item));
 });
 */
+/*
+const editButton = listItem.querySelector('.edit-button');
+const deleteButton = listItem.querySelector('.delete-button');
+const taskTextSpan = listItem.querySelector('.task-text');
+const editInput = listItem.querySelector('.edit-input');
+
+editButton.addEventListener('click', () => {
+    if (editButton.textContent === 'Edit') {
+        // Switch to edit mode
+        taskTextSpan.style.display = 'none';
+        editInput.style.display = 'inline-block';
+        editInput.value = taskTextSpan.textContent;
+        editButton.textContent = 'Save';
+    } else {
+        // Save changes
+        taskTextSpan.textContent = editInput.value;
+        taskTextSpan.style.display = 'inline-block';
+        editInput.style.display = 'none';
+        editButton.textContent = 'Edit';
+
+        // Update the array
+        const index = todos.findIndex(item => item.text === todo.text);
+        if (index !== -1) {
+            todos[index].text = taskTextSpan.textContent;
+        }
+    }
+});
+*/
