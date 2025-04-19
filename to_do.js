@@ -118,6 +118,7 @@ editButton.addEventListener('click', () => {
         const index = todos.findIndex(item => item.text === todo.text);
         if (index !== -1) {
             todos[index].text = taskTextSpan.textContent;
+            getindex;
         }
     }
 });
