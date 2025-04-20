@@ -122,4 +122,23 @@ editButton.addEventListener('click', () => {
         }
     }
 });
+
+const listContainer = document.getElementById('list-container');
+
+listContainer.addEventListener('click', function(event) {
+  if (event.target.classList.contains('delete-btn')) {
+    const listItem = event.target.parentNode;
+    const itemId = listItem.getAttribute('data-id');
+
+    // Remove from DOM
+    listItem.remove();
+
+    // Remove from data array (if applicable)
+    // Assuming 'items' is your data array
+    if (itemId) {
+      items = items.filter(item => item.id !== itemId);
+    }
+  }
+});
+
 */
