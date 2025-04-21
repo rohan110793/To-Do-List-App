@@ -141,4 +141,25 @@ listContainer.addEventListener('click', function(event) {
   }
 });
 
+const list = document.getElementById("todo-list");
+
+list.addEventListener("click", function(event) {
+  if (event.target.classList.contains("delete-btn")) {
+    const listItem = event.target.parentNode;
+    listItem.remove();
+  }
+});
+
+function addTodoItem(text) {
+  const listItem = document.createElement("li");
+  listItem.innerHTML = `
+    <span>${text}</span>
+    <button class="delete-btn">Delete</button>
+  `;
+  list.appendChild(listItem);
+}
+
+
+
+
 */
