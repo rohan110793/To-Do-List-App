@@ -35,6 +35,7 @@ function addTask(){
     edi = document.createElement("button");
     edi.setAttribute("type", "button");
     edi.setAttribute("id", "edit"+i);
+    edi.setAttribute("onclick", "editTask(this)");
     parentElementOne.appendChild(edi);
     document.getElementById("edit"+i).innerHTML="Edit";
 
@@ -49,7 +50,6 @@ function addTask(){
 
 }
 
-
 function deleteTask(button) {
 
     const listItem = button.parentElement // Get the parent <li> element
@@ -57,109 +57,39 @@ function deleteTask(button) {
 
 }
 
-/*
-function editTodoItem(itemElement) {
-    const textElement = itemElement.querySelector('.todo-text');
-    const currentText = textElement.textContent;
+function editTask(button) {
+    const listItem1 = button.parentElement;
+    const listItemId = listItem1.getAttribute("id");
+    const index = listItemId.replace("data", ""); // Extract task index from ID
 
-    const inputElement = document.createElement('input');
-    inputElement.type = 'text';
-    inputElement.value = currentText;
+    // Check if input already exists (we're in edit mode)
+    const existingInput = listItem1.querySelector("input[type='text']");
 
-    const saveButton = document.createElement('button');
-    saveButton.textContent = 'Save';
+    if (!existingInput) {
+        // Create input field with current text
+        const currentText = arr[index];
+        const input = document.createElement("input");
+        input.type = "text";
+        input.value = currentText;
 
-    textElement.replaceWith(inputElement);
-    itemElement.querySelector('.edit-button').replaceWith(saveButton);
+        // Replace the current text with input field
+        listItem1.childNodes[0].textContent = ""; // Clear the text node
+        listItem1.insertBefore(input, listItem1.firstChild);
 
-    saveButton.addEventListener('click', () => {
-        const newText = inputElement.value;
-        inputElement.replaceWith(textElement);
-        textElement.textContent = newText;
-        saveButton.replaceWith(createEditButton(itemElement));
-    });
-}
-
-function createEditButton(itemElement) {
-    const editButton = document.createElement('button');
-    editButton.textContent = 'Edit';
-    editButton.classList.add('edit-button');
-    editButton.addEventListener('click', () => editTodoItem(itemElement));
-    return editButton;
-}
-
-// Example usage (assuming your to-do items have a class 'todo-item')
-const todoItems = document.querySelectorAll('.todo-item');
-todoItems.forEach(item => {
-    item.appendChild(createEditButton(item));
-});
-*/
-/*
-const editButton = listItem.querySelector('.edit-button');
-const deleteButton = listItem.querySelector('.delete-button');
-const taskTextSpan = listItem.querySelector('.task-text');
-const editInput = listItem.querySelector('.edit-input');
-
-editButton.addEventListener('click', () => {
-    if (editButton.textContent === 'Edit') {
-        // Switch to edit mode
-        taskTextSpan.style.display = 'none';
-        editInput.style.display = 'inline-block';
-        editInput.value = taskTextSpan.textContent;
-        editButton.textContent = 'Save';
+        // Change button text to "Save"
+        button.innerText = "Save";
     } else {
-        // Save changes
-        taskTextSpan.textContent = editInput.value;
-        taskTextSpan.style.display = 'inline-block';
-        editInput.style.display = 'none';
-        editButton.textContent = 'Edit';
+        // Save the new value
+        const updatedText = existingInput.value;
+        arr[index] = updatedText;
 
-        // Update the array
-        const index = todos.findIndex(item => item.text === todo.text);
-        if (index !== -1) {
-            todos[index].text = taskTextSpan.textContent;
-            getindex;
-        }
+        // Replace input with plain text
+        listItem1.removeChild(existingInput);
+        listItem1.insertBefore(document.createTextNode(updatedText), listItem1.firstChild);
+
+        // Change button text back to "Edit"
+        button.innerText = "Edit";
     }
-});
-
-const listContainer = document.getElementById('list-container');
-
-listContainer.addEventListener('click', function(event) {
-  if (event.target.classList.contains('delete-btn')) {
-    const listItem = event.target.parentNode;
-    const itemId = listItem.getAttribute('data-id');
-
-    // Remove from DOM
-    listItem.remove();
-
-    // Remove from data array (if applicable)
-    // Assuming 'items' is your data array
-    if (itemId) {
-      items = items.filter(item => item.id !== itemId);
-    }
-  }
-});
-
-const list = document.getElementById("todo-list");
-
-list.addEventListener("click", function(event) {
-  if (event.target.classList.contains("delete-btn")) {
-    const listItem = event.target.parentNode;
-    listItem.remove();
-  }
-});
-
-function addTodoItem(text) {
-  const listItem = document.createElement("li");
-  listItem.innerHTML = `
-    <span>${text}</span>
-    <button class="delete-btn">Delete</button>
-  `;
-  list.appendChild(listItem);
 }
 
 
-
-
-*/
